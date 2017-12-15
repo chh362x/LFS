@@ -1,0 +1,18 @@
+
+
+MMMMMMMM               MMMMMMMM     KKKKKKKKK    KKKKKKK
+M:::::::M             M:::::::M     K:::::::K    K:::::K
+M::::::::M           M::::::::M     K:::::::K    K:::::K
+M:::::::::M         M:::::::::M     K:::::::K   K::::::K
+M::::::::::M       M::::::::::M     KK::::::K  K:::::KKK
+M:::::::::::M     M:::::::::::M       K:::::K K:::::K
+M:::::::M::::M   M::::M:::::::M       K::::::K:::::K
+M::::::M M::::M M::::M M::::::M       K:::::::::::K
+M::::::M  M::::M::::M  M::::::M       K:::::::::::K
+M::::::M   M:::::::M   M::::::M       K::::::K:::::K
+M::::::M    M:::::M    M::::::M       K:::::K K:::::K
+M::::::M     MMMMM     M::::::M     KK::::::K  K:::::KKK
+M::::::M               M::::::M     K:::::::K   K::::::K
+M::::::M               M::::::M     K:::::::K    K:::::K
+M::::::M               M::::::M     K:::::::K    K:::::K
+MMMMMMMM               MMMMMMMM     KKKKKKKKK    KKKKKKK

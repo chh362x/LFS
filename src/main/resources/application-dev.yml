@@ -1,0 +1,24 @@
+server:
+  port: 8088
+  context-path: /
+  session:
+    timeout: 3600
+
+security:
+  user:
+    name: admin
+    password: admin
+
+lis:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:sqlserver://192.168.12.201:1433;database=lisdb
+    username: medical
+    password: medical
+lfs:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@192.168.12.201:1521:orcl
+    username: lims
+    password: cognos
+
