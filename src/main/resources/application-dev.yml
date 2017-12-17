@@ -12,13 +12,25 @@ security:
 lis:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:sqlserver://192.168.12.201:1433;database=lisdb
-    username: medical
-    password: medical
+    #url: jdbc:sqlserver://192.168.12.201:1433;database=lisdb
+    #username: medical
+    #password: medical
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    username: root
+    password: root
 lfs:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:oracle:thin:@192.168.12.201:1521:orcl
-    username: lims
-    password: cognos
+    #url: jdbc:oracle:thin:@192.168.12.201:1521:orcl
+    #username: lims
+    #password: cognos
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    username: root
+    password: root
+
+mongodb:
+    host: mongodb://localhost:27017/test
+
 
