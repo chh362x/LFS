@@ -1,6 +1,7 @@
 package com.common.config;
 
 import com.lfs.services.impl.CustomUserService;
+import com.utils.AjaxRequestMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +25,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Autowired
     private MyAuthenticationProvider provider;//自定义验证
+    @Autowired
+    private AuthenticationEntryPoint authenticationEntryPoint;
 
     protected  void configure(HttpSecurity http) throws Exception{
-        http
+        http.csrf().disable()
                 .httpBasic().and()
                 .authorizeRequests()
-                    .antMatchers("/")
+                    .antMatchers("/","/static/**","/static/js/**","/js/**","/html","/html/**","/page/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/login.html")
+                    .loginPage("/index")
                     .loginProcessingUrl("/login")
                     .usernameParameter("username")
                     .passwordParameter("password")
@@ -44,7 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .and()
                 .logout()
-                    .permitAll();
+                    .permitAll()
+                    .and()
+                .exceptionHandling()
+                .defaultAuthenticationEntryPointFor(authenticationEntryPoint, new AjaxRequestMatcher());
     }
 
     @Override

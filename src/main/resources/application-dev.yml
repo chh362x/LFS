@@ -4,33 +4,30 @@ server:
   session:
     timeout: 3600
 
-security:
-  user:
-    name: admin
-    password: admin
+##security:
+ ## user:
+   ## name: admin
+   ## password: admin
 
 lis:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    #url: jdbc:sqlserver://192.168.12.201:1433;database=lisdb
-    #username: medical
-    #password: medical
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:sqlserver://192.168.12.201:1433;database=lisdb
+    username: medical
+    password: medical
+
 lfs:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    #url: jdbc:oracle:thin:@192.168.12.201:1521:orcl
-    #username: lims
-    #password: cognos
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:oracle:thin:@192.168.20.125:1521:finance
+    username: finance
+    password: bsoft
 
 mongodb:
-    host: mongodb://localhost:27017/test
+    host: mongodb://test:123456@192.168.12.201:27017/test
+spring:
+  thymeleaf:
+    cache: false
+
 
 

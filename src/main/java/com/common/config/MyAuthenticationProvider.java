@@ -2,6 +2,7 @@ package com.common.config;
 
 import com.lfs.entity.SysUsers;
 import com.lfs.services.impl.CustomUserService;
+import com.utils.EncryptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * Created by zl on 17/12/17.
+ * 自定义验证方式
+ * Created by ZhengL on 17/12/17.
  */
 @Component
 public class MyAuthenticationProvider implements AuthenticationProvider {
@@ -28,11 +30,11 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         String password = (String)authentication.getCredentials();
         SysUsers user = (SysUsers) customUserService.loadUserByUsername(username);
         if(user == null){
-            throw new BadCredentialsException("");
+            throw new BadCredentialsException("该登录名不存在!");
         }
-        password = "";
+        password = EncryptionUtils.getPassword(password,user.getUserId());
         if(!password.equals(user.getPassword())){
-            throw  new BadCredentialsException("");
+            throw  new BadCredentialsException("密码错误!");
         }
 
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();

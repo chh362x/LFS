@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 /**
  * Created by zl on 17/12/17.
  */
-//@Configuration
+@Configuration
 @EnableMongoRepositories(basePackages = {"com.mongodb.dao"},
         mongoTemplateRef = RepositoryMongodbConfig.MONGO_TEMPLATE)
 public class RepositoryMongodbConfig {

@@ -35,12 +35,12 @@ public class DataSourceConfig {
     private LfsDsProperties lfsDsProperties;
     @Autowired
     private LisDsProperties lisDsProperties;
-//    @Autowired
-//    private MongoDbProperties mongoDbProperties;
+    @Autowired
+    private MongoDbProperties mongoDbProperties;
 
     @Bean(name="lfsDS")
     @Qualifier("lfsDS")
-    //@ConfigurationProperties(prefix="lfs.datasource")
+    @ConfigurationProperties(prefix="lfs.datasource")
     @Primary
     public DataSource lfsDataSource(){
         DataSource dataSource = null;
@@ -51,7 +51,7 @@ public class DataSourceConfig {
             pro.setProperty("url",lfsDsProperties.getDatasource().getUrl());
             pro.setProperty("username",lfsDsProperties.getDatasource().getUsername());
             pro.setProperty("password",lfsDsProperties.getDatasource().getPassword());
-            pro.setProperty(PROP_DRIVERCLASSNAME,lfsDsProperties.getDatasource().getDriverClassName());
+            //pro.setProperty(PROP_DRIVERCLASSNAME,lfsDsProperties.getDatasource().getDriverClassName());
             dataSource =  DruidDataSourceFactory.createDataSource(pro);
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class DataSourceConfig {
 
     @Bean(name = "lisDS")
     @Qualifier("lisDS")
-    //@ConfigurationProperties(prefix="lis.datasource")
+    @ConfigurationProperties(prefix="lis.datasource")
     public DataSource lisDataSource() {
         DataSource dataSource = null;
         try{
@@ -75,7 +75,7 @@ public class DataSourceConfig {
             pro.setProperty("url",lisDsProperties.getDatasource().getUrl());
             pro.setProperty("username",lisDsProperties.getDatasource().getUsername());
             pro.setProperty("password",lisDsProperties.getDatasource().getPassword());
-            pro.setProperty(PROP_DRIVERCLASSNAME,lfsDsProperties.getDatasource().getDriverClassName());
+            //pro.setProperty(PROP_DRIVERCLASSNAME,lfsDsProperties.getDatasource().getDriverClassName());
             dataSource =  DruidDataSourceFactory.createDataSource(pro);
         }catch(Exception e){
             e.printStackTrace();
@@ -88,26 +88,26 @@ public class DataSourceConfig {
     }
 
 
-//    @Bean(name = RepositoryMongodbConfig.MONGO_TEMPLATE)
-//    @Qualifier(RepositoryMongodbConfig.MONGO_TEMPLATE)
-//    public MongoTemplate primaryMongoDataSource() {
-//        MongoTemplate template = null;
-//        try{
-//            System.out.println("-------------------- MongoDB数据源初始化---------------------");
-//            template = new MongoTemplate(primaryFactory(mongoDbProperties));
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }finally {
-//            if(template!=null){
-//                System.out.println("-------------------- MongoDB数据源初始化完成---------------------");
-//            }
-//        }
-//        return  template;
-//    }
-//
-//    @Bean
-//    public MongoDbFactory primaryFactory(MongoDbProperties mongoDbProperties) throws UnknownHostException {
-//        MongoClientURI client = new MongoClientURI(mongoDbProperties.getHost());
-//        return new SimpleMongoDbFactory(client);
-//    }
+    @Bean(name = RepositoryMongodbConfig.MONGO_TEMPLATE)
+    @Qualifier(RepositoryMongodbConfig.MONGO_TEMPLATE)
+    public MongoTemplate primaryMongoDataSource() {
+        MongoTemplate template = null;
+        try{
+            System.out.println("-------------------- MongoDB数据源初始化---------------------");
+            template = new MongoTemplate(primaryFactory(mongoDbProperties));
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(template!=null){
+                System.out.println("-------------------- MongoDB数据源初始化完成---------------------");
+            }
+        }
+        return  template;
+    }
+
+    @Bean
+    public MongoDbFactory primaryFactory(MongoDbProperties mongoDbProperties) throws UnknownHostException {
+        MongoClientURI client = new MongoClientURI(mongoDbProperties.getHost());
+        return new SimpleMongoDbFactory(client);
+    }
 }

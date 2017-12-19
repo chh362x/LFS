@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by zl on 17/12/17.
  */
 @Component
-//@ConfigurationProperties(prefix="mongodb")
+@ConfigurationProperties(prefix="mongodb")
 @Setter
 @Getter
 public class MongoDbProperties {

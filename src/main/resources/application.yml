@@ -8,9 +8,19 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   jackson:
     serialization: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
 
 server:
   tomcat:
     uri-encoding: UTF-8
+security:
+  headers:
+    content-type: false
+    xss: false
+    hsts: none
+
 
 
